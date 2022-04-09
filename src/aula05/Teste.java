@@ -6,7 +6,7 @@ public class Teste {
 		c1.infoConta();
 		System.out.println();
 		
-		c1.abrirConta(9, "cc", "Roberto Armando Silva", 25f);
+		c1.abrirConta(2340009, "cc", "Roberto Armando Silva", 25f);
 		c1.infoConta();
 		System.out.println();
 		
@@ -26,6 +26,8 @@ public class Teste {
 		c1.infoConta();
 		System.out.println();
 		
+		c1.saque(28);
+		c1.saque(28);
 		c1.saque(28);
 		c1.infoConta();
 		System.out.println();

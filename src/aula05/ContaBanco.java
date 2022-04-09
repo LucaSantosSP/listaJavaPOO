@@ -1,7 +1,7 @@
 package aula05;
 
 public class ContaBanco {
-	public Integer numConta;
+	public int numConta;
 	protected String tipo;
 	private String dono;
 	private double saldo;
@@ -12,7 +12,7 @@ public class ContaBanco {
 		this.saldo = 0f;
 	}
 	
-	public void abrirConta(Integer numConta, String tipo, String dono, double depositoInicial) {
+	public void abrirConta(int numConta, String tipo, String dono, double depositoInicial) {
 		this.numConta = numConta;
 		this.tipo = tipo;
 		this.dono = dono;
@@ -23,26 +23,48 @@ public class ContaBanco {
 			this.saldo = 150 + depositoInicial;
 		}
 		this.status = true;
+		System.out.println("Conta aberta com sucesso!");
+		System.out.println();
 	}
 	
 	public void fecharConta() {
-		if (this.saldo == 0) {
-			this.numConta = null;
-			this.tipo = null;
-			this.dono = null;
-			this.status = false;
+		if (this.getSaldo() > 0) {
+			System.out.println("Essa conta não pode ser fechada pois ainda possui saldo!");
+			System.out.println();
+		}
+		else if (this.getSaldo() < 0){
+			System.out.println("Essa conta não pode ser fechada pois possui débito!");
+			System.out.println();
 		}
 		else {
-			System.out.println("Para fechar uma conta ela precisa estar com um saldo igual a zero!");
+			this.setStatus(false);
+			System.out.println("Conta fechada com sucesso!");
+			System.out.println();
 		}
 	}
 	
 	public void depositar(double deposito) {
-		this.saldo = saldo + deposito;
+		if (this.getStatus()) {
+			this.saldo = saldo + deposito;
+		}
+		else {
+			System.out.println("A conta não está ativa!");
+		}
 	}
 	
 	public void saque(double saque) {
-		this.saldo = saldo - saque;		
+		if (this.getStatus()) {
+			if (this.getSaldo() >= saque) {
+				this.saldo = saldo - saque;	
+			}
+			else {
+				System.out.println("Saldo insuficiente!");
+			}
+		}
+		else {
+			System.out.println("A conta não está ativa!");
+		}
+			
 	}
 	
 	public void pagarMensal() {
@@ -56,10 +78,10 @@ public class ContaBanco {
 	
 	public void infoConta() {
 		if ( this.status == true) {
-			System.out.println("Nome: " + getDono());
-			System.out.println("Número da conta: " + getNumConta());
-			System.out.println("Tipo da conta: " + getTipo());
-			System.out.println("Saldo da conta: R$" + getSaldo());
+			System.out.println("Nome: " + this.getDono());
+			System.out.println("Número da conta: " + this.getNumConta());
+			System.out.println("Tipo da conta: " + this.getTipo());
+			System.out.println("Saldo da conta: R$" + this.getSaldo());
 		}	
 		else {
 			System.out.println("Essa conta está fechada!");
@@ -67,7 +89,7 @@ public class ContaBanco {
 		
 	}	
 	
-	public void setNumConta(Integer numConta) {
+	public void setNumConta(int numConta) {
 		this.numConta = numConta;
 	}
 	
