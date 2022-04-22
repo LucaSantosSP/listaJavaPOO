@@ -1,7 +1,5 @@
 package aula07;
 
-import javax.management.ConstructorParameters;
-
 public class TesteAula07 {
 	public static void main(String[] args) {
 		Lutador l[] = new Lutador[6];
@@ -12,10 +10,8 @@ public class TesteAula07 {
 		l[4] = new Lutador("Ufocobol", "Brasil", 37, 1.70, 119.3, 5, 4, 3);
 		l[5] = new Lutador("Nerdaard", "EUA", 30, 1.81, 105.7, 12, 2, 4);
 		
-		l[1].apresentar();
-		l[1].status();
-		
-		l[1].setPeso(52);
-		l[1].status();
+		Luta UEC01 = new Luta();
+		UEC01.marcarLuta(l[0], l[1]);
+		UEC01.lutar();
 	}
 }

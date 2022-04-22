@@ -33,6 +33,7 @@ public class Lutador {
 		System.out.println("Vitórias: " + this.getVitorias());
 		System.out.println("Derrotas: " + this.getDerrotas());
 		System.out.println("Empates: " + this.getEmpates());
+		System.out.println("");
 	}
 	
 	public void status() {
@@ -56,7 +57,7 @@ public class Lutador {
 		this.setEmpates(getEmpates() + 1);
 	}
 	
-	// Métodos get e set
+	// Métodos especiais
 	
 	public void setNome(String nome) {
 		this.nome = nome;
