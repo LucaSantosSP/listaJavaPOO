@@ -1,6 +1,6 @@
 package aula09;
 
-public class Livro {
+public class Livro implements Publicacao{
 	private String titulo;
 	private String autor;
 	private int totPaginas;
@@ -10,8 +10,8 @@ public class Livro {
 	
 	//métodos
 	public String detalhes() {
-		return "Livro{" + "titulo= " + this.getTitulo() + ", autor= "  + this.getAutor() + ", Total de páginas= " + this.getTotPaginas() +
-				", Página atual= " + this.pagAtual + ", aberto= " + this.getAberto() + ", leitor= " + this.getLeitor() + '}';
+		return "Titulo= " + this.getTitulo() + "\nAutor= "  + this.getAutor() + "\nTotal de páginas= " + this.getTotPaginas() +
+				"\nPágina atual= " + this.pagAtual + "\nAberto= " + this.getAberto() + "\nLeitor= " + this.getLeitor().getNome() + "\n";
 	}
 	
 	//métodos especiais
@@ -64,5 +64,45 @@ public class Livro {
 	}
 	public Pessoa getLeitor() {
 		return this.leitor;
+	}
+
+	@Override
+	public void abrir() {
+		this.setAberto(true);
+	}
+
+	@Override
+	public void fechar() {
+		this.setAberto(false);
+	}
+
+	@Override
+	public void folhear(int p) {
+		if(p > this.getTotPaginas()) {
+			this.setPagAtual(this.getTotPaginas());
+		}
+		else {
+			this.setPagAtual(p);
+		}
+	}
+
+	@Override
+	public void avancarPag() {
+		if(this.getPagAtual()+1 > this.getTotPaginas()) {
+			this.setPagAtual(this.getTotPaginas());
+		}
+		else {
+			this.setPagAtual(this.getPagAtual()+1);
+		}
+	}
+
+	@Override
+	public void voltarPag() {
+		if(this.getPagAtual()-1 < 0) {
+			this.setPagAtual(0);
+		}
+		else {
+			this.setPagAtual(this.getPagAtual()-1);
+		}
 	}
 }

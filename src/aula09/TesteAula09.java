@@ -8,5 +8,11 @@ public class TesteAula09 {
 		p1.fazerAniver();
 		System.out.println(l1.detalhes());
 		
+		l1.abrir();
+		l1.folhear(647);
+		System.out.println(l1.detalhes());
+		
+		l1.avancarPag();
+		System.out.println(l1.detalhes());
 	}
 }

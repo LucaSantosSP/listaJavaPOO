@@ -7,8 +7,6 @@ public class Pessoa {
 	
 	//métodos
 	public void fazerAniver() {
-		System.out.println(this.getNome() + " fez aniversário e agora não tem mais " + this.getIdade() + " anos, ele tem " +
-				(this.getIdade()+1) + " anos!");
 		this.setIdade(this.getIdade()+1);
 	}
 	
